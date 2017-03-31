@@ -73,7 +73,7 @@ public class Menudeop extends AppCompatActivity {
         values2.add("mostar a frequencia da rede");
         values2.add("mostar a mascara de rede");
 
-        // specify an adapter (see also next example)
+        //setando os adpters
         MyAdapter mAdapter = new MyAdapter(values, values2);
         recyclerView.setAdapter(mAdapter);
 
@@ -89,8 +89,6 @@ public class Menudeop extends AppCompatActivity {
         }
 
         new Thread(new Task()).start();
-
-
 
     }
 
