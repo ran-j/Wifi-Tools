@@ -35,7 +35,7 @@ public class Menudeop extends AppCompatActivity {
     WifiManager mainWifi;
     WifiInfo info;
     DhcpInfo dh;
-    int vai = 0;
+    int repete = 0;
 
 
     @Override
@@ -79,13 +79,13 @@ public class Menudeop extends AppCompatActivity {
 
 
         //pega o ssdi salvo na varialvel global
-        String ssdi = Variaveis.wifiname;
+        String ssid = Variaveis.wifiname;
 
         //seta nome do ssdi no titulo
-        if (!(ssdi == null)) {
-            toolbar.setTitle("Conectado ao " + ssdi);
+        if (!(ssid == null)) {
+            toolbar.setTitle("Conectado ao " + ssid);
         } else {
-            toolbar.setTitle("Não foi possivel pegar o SSDI");
+            toolbar.setTitle("Não foi possivel pegar o SSID");
         }
 
         new Thread(new Task()).start();
@@ -96,7 +96,7 @@ public class Menudeop extends AppCompatActivity {
         @Override
         public void run() {
 
-            while (vai == 0) {
+            while (repete == 0) {
 
                 if (Variaveis.modo == 1) {
                     Variaveis.modo = 0;
