@@ -19,7 +19,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
     WifiManager mainWifi;
     TextView texto;
-    int foi=0;
+    int conectado=0;
     Context context;
 
     @Override
@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public  void starttask(){
-        foi=0;
+        conectado=0;
         new Thread(new Task()).start();
     }
 
     class Task implements Runnable {
         @Override
         public void run() {
-            //um while pra fazer um loop
-            while(foi==0){
+            //aguarda uma conexão
+            while(conectado==0){
                 mainWifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
                 if (!mainWifi.isWifiEnabled()) {
                     //se o wifi estiver desabilidado
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         int netType = netInfo.getType();
                         if (netType == ConnectivityManager.TYPE_WIFI) {
                             Variaveis.wifiname = info.getSSID();
-                            foi=1;
+                            conectado=1;
                             nextmenu();
                         }
                     }
